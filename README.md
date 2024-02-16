@@ -26,7 +26,7 @@ pip install -r requirements.txt
 ```
 
 ## Navigating the code
-Since our code is based on [Lit-LLaMA](https://github.com/Lightning-AI/lit-llama) framework, please refer to them for how to set up and use this framework.
+Since our code is based on [Lit-LLaMA](https://github.com/Lightning-AI/lit-llama) framework, please refer to them for how to use this framework.
 
 ## Supervised Finetuning with Aligner
 ```bash
@@ -60,17 +60,17 @@ that of LoRA or LLaMA-Adapter.
 ## Instruction-Following SFT with Vicuna Benchmark 
 **Better or similar performance with hundreds to thousands times less paramters than LoRA**
 
-<div align="center">
-<img src=assets/alpaca-llama2-7B--Aligner10Token-VS-LoRA.png alt="Aligner10Token-VS-LoRA-Alpaca--llama2-7B" width="256" />
+<div style="text-align: center;">
+  <div style="display: inline-flex;">
+    <img src="assets/aligner10token-vs-lora-llama2-7B-alpaca-vicuna.png" alt="Aligner10Token-VS-LoRA-Alpaca--llama2-7B" width="256" />
+    <img src="assets/aligner10token-vs-llamaAdapter-llama2-7B-alpaca-vicuna.png" alt="Aligner10Token-VS-LoRA-Alpaca--llama2-7B" width="256" />
+  </div>
 </div>
 
-With as few as 10 tokens (~50k params), Aligner achieves better win-rate than LoRA (~8 million params) for Supervised Finetuning Task with Alpaca dataset on Vicuna benchmark evaluated by GPT4. 
 
-<div align="center">
-<img src=assets/alpaca-llama2-7B--Aligner1Token-VS-LoRA.png alt="Aligner1Token-VS-LoRA-Alpaca--llama2-7B" width="256"/>
-</div>
 
-Even with only 1 token, Aligner still achives close performance.
+With as few as 10 tokens (~50k params), Aligner achieves better win-rate than LoRA (~4 million params) and LLaMA-Adapter(~1.2 million params) for Supervised Finetuning Task with Alpaca dataset on Vicuna benchmark evaluated by GPT4. 
+
 
 <div align="center">
 <img src=assets/alpaca-vicuna-complete-comparisons.png alt="alpaca-vicuna-complete-comparisons" width="256"/>
