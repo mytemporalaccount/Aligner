@@ -35,12 +35,21 @@ pip install -r requirements.txt
 ## Download and Convert the LLaMA-2 Weight
 Notice that you need to download the pretrained LLaMA-2 models or similar structure models and convert them to that of lit-llama format to use this code base. Follow [the guide](howto/download_weights.md) for how to.
 
+## Prepare Datasets
+The scripts to download and prepare datsets in the [scripts](scripts) folder. e.g the script to download alpaca dataset is [scripts/prepare_alpaca.py](scripts/prepare_alpaca.py)
+To prepare the PKU-Beaver safety dataset for value alignment task, the script is [scripts/prepare_beaver_safe.py](scripts/prepare_beaver_safe.py)
+
 ## Supervised Finetuning with Aligner
 ```bash
 python finetune/aligner.py
 ```
 You can adjust the hyper parameters, dataset and the checkpoint paths in the python script. 
 
+## Value Alignment using DPO with Aligner
+```bash
+python finetune/alignerDPO.py
+```
+Similarly, you can adjust the hyper parameters, dataset and the checkpoint paths in the python script. 
 
 ## Infer with Aligner
 

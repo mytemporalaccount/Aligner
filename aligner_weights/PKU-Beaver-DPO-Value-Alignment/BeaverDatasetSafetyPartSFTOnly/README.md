@@ -1,0 +1,2 @@
+It is recommended by DPO that you do a supervised finetuning over the value alignment dataset first to create a reference model.
+This is the aligner weight trained over the safe only answers in Beaver dataset. We did not finetune it over the unsafe data because we intuitively think it might better (at least not worse, meawhile takes less time to train) this way. You can use it as the reference model if you want to run [DPO](finetune/alignerDPO.py) yourself.
