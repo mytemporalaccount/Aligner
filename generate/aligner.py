@@ -29,7 +29,7 @@ def main(
           [NewPrompt] What if the Internet had been invented during the Renaissance period? \
             ",
     input: str = "",
-    aligner_path: Path = Path("out/aligner/redo/lit-llama-2-alpaca512/7B/1vector-start_layer2-lr0.009bs64weightDecay0.02wu2/epoch-8.0-valloss0.9565.pth"),
+    aligner_path: Path = Path("aligner_weights/Alpaca_Instruction_Following_Supervised_Finetuning/aligner10Tokens-llama2-7B-lr0.009bs64weightDecay0.02wu2-epoch-8.0-valloss0.9489.pth"),
     pretrained_path: Path = Path("checkpoints/lit-llama-2/7B/lit-llama.pth"),
     tokenizer_path: Path = Path("checkpoints/lit-llama-2/tokenizer.model"),
     question_file = None, 

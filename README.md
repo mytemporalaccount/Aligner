@@ -10,6 +10,11 @@ The intuition is that LLMs learn forms or styles differently from learning knowl
 
 As it turns out, such design achieves extremely high parameter efficiency for alignment tasks, which we include Instruction-Following task and Value Alignment tasks as the representive alignment tasks. Even for reasoning tasks, it is not less efficient. 
 
+## Navigating the Codebase
+Our code is based on [Lit-LLaMA](https://github.com/Lightning-AI/lit-llama) framework, please refer to it for how to use this framework. 
+
+Most of the guides are in the [howto](howto)
+
 # Set Up and Running
 ## Setup
 Clone the repo
@@ -25,8 +30,10 @@ install dependencies
 pip install -r requirements.txt
 ```
 
-## Navigating the code
-Since our code is based on [Lit-LLaMA](https://github.com/Lightning-AI/lit-llama) framework, please refer to them for how to use this framework.
+
+
+## Download and Convert the LLaMA-2 Weight
+Notice that you need to download the pretrained LLaMA-2 models or similar structure models and convert them to that of lit-llama format to use this code base. Follow [the guide](howto/download_weights.md) for how to.
 
 ## Supervised Finetuning with Aligner
 ```bash
@@ -34,14 +41,14 @@ python finetune/aligner.py
 ```
 You can adjust the hyper parameters, dataset and the checkpoint paths in the python script. 
 
-Notice that you need to download the pretrained LLaMA-2 models or similar structure models and convert them to that of lit-llama format. Follow [the guide](howto/download_weights.md) for how to.
-
 
 ## Infer with Aligner
 
 ```bash
 python generate/aligner.py
 ```
+We provide some trained Aligner weights in [aligner_weights](aligner_weights) folder that you can directly use. However, you need to obtain the pretrained LLaMA-2 model yourself.
+
 Notice our provided pretrained Aligner checkpoint is trained with LLaMA-2 7B or 13B. It will still work with LLaMA-1 or any same structure model, but it will suffer some performance drop. For other structure or size models, the checkpoint will not work.
 
 # Method
