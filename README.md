@@ -1,8 +1,16 @@
-# Aligner
+# Aligner: One Global Token is Worth Millions of Parameters When Aligning LLMs
 
-This project implements the Aligner method. Aligner is an extremely paramter efficient method for LLM alignment tasks, utilizing as few as 1 to 10 tokens but still achieves matching performance as that of LoRA and LLaMA-Adapters. See our [arxiv paper](https://arxiv.org/abs/2312.05503 ).
+This project implements the Aligner method from the paper "Aligner : One Global Token is Worth Millions of Parameters When Aligning LLMs". Aligner is an extremely parameter-efficient method for LLM alignment tasks (including Instruction Following SFT and Value Alignment), utilizing as few as 1 to 10 tokens but still achieves matching performance as that of LoRA and LLaMA-Adapters. 
 
-The intuition is that LLMs learn forms or styles differently from learning knowledge or reasoning ability. But what's the difference?  Intuitively, we hypothesize that form guides the whole process of applying knowledge, so form should have global influence over “ability”. Therefore, to learn any desired “form” more efficiently, it may best be regarded a global component.
+But for reasoning tasks, such as mathematics, a few tokens are insufficient for alignment. Aligner requires a token count nearly equivalent to that of LLaMA-Adapters to achieve similar performance in mathematical tasks.
+
+These findings suggest that LLMs process "style" or "form" distinctly from "reasoning" or "knowledge," with form exerting a global influence on the model's capabilities. Conceptualizing LLMs as linear models, the Aligner method bears resemblance to eigen decomposition, revealing that "form" assumes a significantly low rank. orders of magnitude lower than what LoRA suggests.
+
+In summary, our project offers a highly efficient tool and provides theoretically insightful observations in the field of large language models. 
+
+
+*(Our paper, accompanied by this code base, is currently under review. To preserve anonymity, we have not included a direct link to the arXiv paper here. However, if you are not a reviewer and wish to explore further details, you may search for our paper titled "Aligner: One Global Token is Worth Millions of Parameters When Aligning LLMs.")*
+
 
 <div align="center">
 <img src=assets/parameters.png alt="Aligner method" width="512"/>
@@ -73,7 +81,32 @@ that of LoRA or LLaMA-Adapter.
 
 
 # Model Results
-## Instruction-Following SFT with Vicuna Benchmark 
+All the following reponses are not cherry-picked but just taken the first few from the benchmark question set.
+
+## Instruction-Following SFT with Alpaca
+### Aligner 1 Token Responses
+<div align="center">
+<img src=assets/responses/aligner1alpaca.png alt="aligner1alpaca" width="512"/>
+</div>
+
+### Aligner 10 Token Responses
+<div align="center">
+<img src=assets/responses/aligner10alpaca.png alt="aligner10alpaca" width="512"/>
+</div>
+
+### LoRA Responses (for comparison)
+<div align="center">
+<img src=assets/responses/loraAlpaca(1).png alt="loraAlpaca1" width="512"/>
+<img src=assets/responses/loraAlpaca(2).png alt="loraAlpaca2" width="512"/>
+</div>
+
+### LLaMA-Adapter Responses (for comparison)
+<div align="center">
+<img src=assets/responses/llama-adapter-Alpaca.png alt="llama-adapter-Alpaca" width="512"/>
+</div>
+
+
+### Vicuna Benchmark
 **Better or similar performance with hundreds to thousands times less paramters than LoRA**
 
 <div style="text-align: center;">
@@ -94,7 +127,25 @@ With as few as 10 tokens (~50k params), Aligner achieves better win-rate than Lo
 
  More comprehensive comparisons between Aligner and LoRA, LLaMA-Adapter over both 7B and 13B LLaMA-2 models.
 
-## Value Alignment on PKU-Beaver
+## Value Alignment on PKU-Beaver Dataset
+### Aligner 1 Token Responses
+<div align="center">
+<img src=assets/responses/aligner1beaver.png alt="aligner1beaver" width="512"/>
+</div>
+
+### LoRA Responses
+<div align="center">
+<img src=assets/responses/loraBeaver.png alt="loraBeaver" width="512"/>
+</div>
+
+### LLaMA-Adapter Responses
+<div align="center">
+<img src=assets/responses/llamaAdapterBeaver1.png alt="llamaAdapterBeaver1" width="512"/>
+<img src=assets/responses/llamaAdapterBeaver2.png alt="llamaAdapterBeaver2" width="512"/>
+</div>
+
+### PKU-Beaver Benchmark
+
 **Better or similar performance with hundreds to thousands times less paramters than LoRA**
 
 <div align="center">
