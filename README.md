@@ -11,14 +11,28 @@ In summary, our project offers a highly efficient tool and provides theoreticall
 
 *(Our paper, accompanied by this code base, is currently under review. To preserve anonymity, we have not included a direct link to the arXiv paper here. However, if you are not a reviewer and wish to explore further details, you may search for our paper titled "Aligner: One Global Token is Worth Millions of Parameters When Aligning LLMs.")*
 
+# Method
+<div align="center">
+<img src=assets/method.png alt="Aligner method" width="512"/>
+</div>
+
+The Aligner architecture implements a global prefix token paradigm. Within a transformer-based model,
+we prepend a shared set of N learnable tokens to which each layer attends. Further details are based on the LLaMA-
+Adapter’s design. Attention is computed on these tokens and added back to the original attention, modulated by a
+gating factor. In practice, we find that N = 1 often already suffices to generate answers of similar quality level as
+that of LoRA or LLaMA-Adapter.
+
+## Parameter Size Comparisons
+
+The number of parameters needed for each method and the number of PEFT modules that can fit into a 24GB GPU
+along with a 7B model.
 
 <div align="center">
 <img src=assets/parameters.png alt="Aligner method" width="512"/>
 </div>
 
-As it turns out, such design achieves extremely high parameter efficiency for alignment tasks, which we include Instruction-Following task and Value Alignment tasks as the representive alignment tasks. Even for reasoning tasks, it is not less efficient. 
 
-## Navigating the Codebase
+# Navigating the Codebase
 Our code is based on [Lit-LLaMA](https://github.com/Lightning-AI/lit-llama) framework, please refer to it for how to use this framework. 
 
 Most of the guides are in the [howto](howto)
@@ -68,16 +82,7 @@ We provide some trained Aligner weights in [aligner_weights](aligner_weights) fo
 
 Notice our provided pretrained Aligner checkpoint is trained with LLaMA-2 7B or 13B. It will still work with LLaMA-1 or any same structure model, but it will suffer some performance drop. For other structure or size models, the checkpoint will not work.
 
-# Method
-<div align="center">
-<img src=assets/method.png alt="Aligner method" width="512"/>
-</div>
 
-The Aligner architecture implements a global prefix token paradigm. Within a transformer-based model,
-we prepend a shared set of N learnable tokens to which each layer attends. Further details are based on the LLaMA-
-Adapter’s design. Attention is computed on these tokens and added back to the original attention, modulated by a
-gating factor. In practice, we find that N = 1 often already suffices to generate answers of similar quality level as
-that of LoRA or LLaMA-Adapter.
 
 
 # Model Results
