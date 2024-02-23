@@ -1,8 +1,8 @@
 # Aligner: One Global Token is Worth Millions of Parameters When Aligning LLMs
 
-This project implements the Aligner method from the paper "Aligner : One Global Token is Worth Millions of Parameters When Aligning LLMs". Aligner is an extremely parameter-efficient method for LLM alignment tasks (including Instruction Following SFT and Value Alignment), utilizing as few as 1 to 10 tokens but still achieves matching performance as that of LoRA and LLaMA-Adapters. 
+This project implements the Aligner method from the paper "Aligner : One Global Token is Worth Millions of Parameters When Aligning LLMs". Aligner is an extremely parameter-efficient method for LLM **alignment tasks** (including Instruction Following SFT and Value Alignment), utilizing as few as 1 to 10 tokens but still achieves matching performance as that of LoRA and LLaMA-Adapters. 
 
-But for reasoning tasks, such as mathematics, a few tokens are insufficient for alignment. Aligner requires a token count nearly equivalent to that of LLaMA-Adapters to achieve similar performance in mathematical tasks.
+But for **reasoning tasks**, such as mathematics, we found that a few tokens are insufficient to reach the same performance as that of LoRA or LLaMA-Adapter. Aligner requires a token count nearly equivalent to that of LLaMA-Adapters to achieve similar performance in mathematical tasks.
 
 These findings suggest that LLMs process "style" or "form" distinctly from "reasoning" or "knowledge," with form exerting a global influence on the model's capabilities. Conceptualizing LLMs as linear models, the Aligner method bears resemblance to eigen decomposition, revealing that "form" assumes a significantly low rank. orders of magnitude lower than what LoRA suggests.
 
