@@ -22,6 +22,8 @@ Adapter’s design. Attention is computed on these tokens and added back to the 
 gating factor. In practice, we find that N = 1 often already suffices to generate answers of similar quality level as
 that of LoRA or LLaMA-Adapter.
 
+*People might thought of prompt-tuning method (injecting a learnable token in the input) that could also take as few as 1 token. We found that it does not generate any meaningful words when we tune it on Alpaca*. 
+
 ## Parameter Size Comparisons
 
 The number of parameters needed for each method and the number of PEFT modules that can fit into a 24GB GPU
