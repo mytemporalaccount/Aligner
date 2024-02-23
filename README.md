@@ -86,7 +86,7 @@ Notice our provided pretrained Aligner checkpoint is trained with LLaMA-2 7B or 
 
 
 # Model Results
-All the following reponses are not cherry-picked but just taken the first few from the benchmark question set.
+All the following reponses are not cherry-picked but just taken from the first few from the benchmark question set.
 
 ## Instruction-Following SFT with Alpaca
 ### Aligner 1 Token Responses
